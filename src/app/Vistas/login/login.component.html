@@ -1,20 +1,31 @@
-<div class="wrapper">
+<div class="wrapper"
+[ngClass]="{
+    'has-email-error': formlogin.controls['email'].errors,
+    'has-pass-error': formlogin.controls['pass'].errors,
+    'has-both-errors': formlogin.controls['email'].errors && formlogin.controls['pass'].errors
+ }">
     <div class="form-wrapper">
-        <form action="">
+        <form action="" [formGroup]="formlogin">
             <h2>Inciar Sesion</h2>
-            <div class="input-box">
+            <div class="form-group input-box">
                 <span class="icon">
                     <i class="bi bi-envelope-fill"></i>
                 </span>
-                <input type="email" placeholder="Email" required>
+                <input type="email" formControlName="email" placeholder="Email" required>
+                <div *ngIf="formlogin.controls['email'].errors" class="text-danger">
+                    El email es obligatorio 
+                </div>
             </div>
-            <div class="input-box">
+            <div class="form-group input-box">
                 <span class="icon">
                     <i class="bi bi-lock-fill"></i>
                 </span>
-                <input type="password" placeholder="Password" required>
+                <input type="password" formControlName="pass" placeholder="Password" required>
+                <div *ngIf="formlogin.controls['pass'].errors" class="text-danger">
+                    La contraseña es obligatoria 
+                </div>
             </div>
-            <button type="submit">Inciar</button>
+            <button type="submit" [disabled]="!formlogin.valid">Iniciar</button>
             <div class="sign-link">
                 <p>¿No tienes cuenta? <a routerLink="register">Registrarse</a></p>
             </div>

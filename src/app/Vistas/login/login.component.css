@@ -15,7 +15,22 @@
     overflow: hidden;
     transition: width 0.5s ease, height 0.5s ease;
   }
+  .wrapper.has-email-error {
+    /* Estilos específicos cuando hay errores en el campo de correo electrónico */
+    /* Ajusta la altura según sea necesario */
+    height: 420px;
+  }
   
+  .wrapper.has-pass-error {
+    /* Estilos específicos cuando hay errores en el campo de contraseña */
+    /* Ajusta la altura según sea necesario */
+    height: 420px;
+  }
+  .wrapper.has-both-errors {
+    /* Estilos específicos cuando hay errores en ambos campos */
+    /* Ajusta la altura según sea necesario */
+    height: 450px;
+  }
   .wrapper .text-right {
     position: absolute;
     top: 60px;
@@ -61,6 +76,15 @@ h2 {
     font-size: 1.2em;
     line-height: 55px;
 }
+button:disabled {
+    text-decoration: line-through; /* Tacha el texto */
+    opacity: 0.6; /* Ajusta la opacidad si deseas hacerlo más tenue */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+  }
+  button:disabled:hover {
+    background-color: red; /* Cambia el color de fondo a rojo */
+    color: white; /* Cambia el color del texto a blanco */
+  }
 
 button {
     width: 100%;

@@ -1,16 +1,10 @@
 <div class="wrapper"
 [ngClass]="{
-    'has-nombre': hasNombre,
-    'has-apellidos': hasApellidos,
-    'has-telefono': hasTelefono,
-    'has-email': hasEmail,
-    'has-pass': hasPass,
-    'has-email-pass-error': !hasEmail && !hasPass,
-    'has-nombre-apellidos-telefono-error': !hasNombre && !hasApellidos && !hasTelefono,
+    'no-inputs-name': !hasApellidos && !hasTelefono && !hasEmail && !hasPass,
     'no-inputs': !hasNombre && !hasApellidos && !hasTelefono && !hasEmail && !hasPass
   }">
     <div class="form-wrapper">
-        <form action="" id="formularioRegistrarse" [formGroup]="formregister" >
+        <form (submit)="enviar()" id="formularioRegistrarse" [formGroup]="formregister" >
             <h2>Registrarse</h2>
             <div class="form-group input-box">
                 <span class="icon">
@@ -53,13 +47,13 @@
                 <span class="icon">
                     <i class="bi bi-lock-fill"></i>
                 </span>
-                <input  placeholder="Password" formControlName="pass" name="pass" id="passregister" required>
+                <input  placeholder="Password"  formControlName="pass" name="pass" id="passregister" required>
                 <div *ngIf="formregister.controls['pass'].errors" class="text-danger">
                     La contraseña es obligatoria 
                 </div>
             </div>
             
-            <button type="submit">Registrarse</button>
+            <button type="submit"  [disabled]="!formregister.valid">Registrarse</button>
             <div class="sign-link">
                 <p>¿Ya tienes cuenta? <a href="">Inciar Sesion</a></p>
             </div>

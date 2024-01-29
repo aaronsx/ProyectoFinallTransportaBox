@@ -11,7 +11,6 @@ export class RegisterComponent {
   formregister = this.formBuilder.group({
     nombre: ['',[ Validators.required, Validators.minLength(3)]],
     apellidos: ['', [Validators.required, Validators.maxLength(15)]],
-    dni: ['', [Validators.required, Validators.maxLength(9)]],
     email: ['', [Validators.required, Validators.email]],
     telefono: ['', [Validators.required,Validators.maxLength(9)]],
     pass: ['', [Validators.required]]  
@@ -20,7 +19,6 @@ export class RegisterComponent {
   // Propiedades booleanas para indicar si cada campo tiene valor
   hasNombre: boolean = false;
   hasApellidos: boolean = false;
-  hasDni: boolean = false;
   hasEmail: boolean = false;
   hasTelefono: boolean = false;
   hasPass: boolean = false;
@@ -34,6 +32,7 @@ export class RegisterComponent {
 
   // Añade observadores para cada campo para actualizar las propiedades booleanas
   private subscribeToValueChanges(): void {
+    
     this.formregister.controls['nombre']?.valueChanges.subscribe((value) => {
       this.hasNombre = !!value;
     });
@@ -42,9 +41,7 @@ export class RegisterComponent {
       this.hasApellidos = !!value;
     });
 
-    this.formregister.controls['dni']?.valueChanges.subscribe((value) => {
-      this.hasDni = !!value;
-    });
+    
 
     this.formregister.controls['email']?.valueChanges.subscribe((value) => {
       this.hasEmail = !!value;
@@ -57,5 +54,10 @@ export class RegisterComponent {
     this.formregister.controls['pass']?.valueChanges.subscribe((value) => {
       this.hasPass = !!value;
     });
+  }
+
+  enviar() {
+    
+        
   }
 }

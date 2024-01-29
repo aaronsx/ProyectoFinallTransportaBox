@@ -4,7 +4,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
-    height: 650px;
     background: linear-gradient(90deg, rgba(0, 153, 255, 0.7), rgba(255, 251, 0, 0.7));
     border-radius: 50px;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
@@ -15,18 +14,22 @@
     overflow: hidden;
     transition: width 0.5s ease, height 0.5s ease;
   }
- 
-
-.wrapper .has-email-pass-error {
-  /* Estilos cuando se ha completado email y pass */
-  /* Ajusta la altura según tus preferencias */
-  height: 770px;
-}
-.wrapper .has-nombre-apellidos-telefono-error {
-    /* Estilos cuando se ha completado email y pass */
-    /* Ajusta la altura según tus preferencias */
-    height: 780px;
+  
+  button:disabled {
+    text-decoration: line-through; /* Tacha el texto */
+    opacity: 0.6; /* Ajusta la opacidad si deseas hacerlo más tenue */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
   }
+  button:disabled:hover {
+    background-color: red; /* Cambia el color de fondo a rojo */
+    color: white; /* Cambia el color del texto a blanco */
+  }
+  .wrapper.no-inputs-name{
+    /* Estilos cuando no se ha completado ningún campo */
+    /* Ajusta la altura según tus preferencias */
+    height: 740px;
+  }
+
 .wrapper.no-inputs {
   /* Estilos cuando no se ha completado ningún campo */
   /* Ajusta la altura según tus preferencias */

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "transportabox-a494b": {
+      "hosting": {
+        "ProyectoFinallTransportaBox": [
+          "transportabox-a494b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "transportabox-a494b"
+  }
+}

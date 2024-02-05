@@ -1,7 +1,9 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AutenticacionService } from 'src/app/Servicios/autenticacion.service';
 import { CambioFondoService } from 'src/app/Servicios/cambio-fondo.service';
-
+import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -23,7 +25,11 @@ export class RegisterComponent {
   hasTelefono: boolean = false;
   hasPass: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private fondoService: CambioFondoService, private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private formBuilder: FormBuilder, 
+    private fondoService: CambioFondoService, 
+    private renderer: Renderer2, private el: ElementRef, 
+    public authService: AutenticacionService,
+    private fbs:FirebaseService) {}
 
   ngOnInit(): void {
     this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/fondoalreves.jpg');
@@ -57,7 +63,24 @@ export class RegisterComponent {
   }
 
   enviar() {
-    
-        
+    //Swal es un tipo de alertas realizada si se borra o no el usuario
+    this.fbs.setFireBase(this.formregister.value,'Usuario').then(() =>
+
+    Swal.fire({
+      title: "Guardado!",
+      text: "Usuario ha sido guardado",
+      icon: 'success'
+    }))
+    .catch(()=> Swal.fire({
+      title: "Oops...!",
+      text: "El usuario no ha sido guardado",
+      icon: 'error'
+    }));
+    this.authService.SignUp(this.formregister.value.email || "", this.formregister.value.pass|| "");
+        console.log("email "+this.formregister.value.email);
+        console.log("nombre "+this.formregister.value.nombre);
+        console.log("pass "+this.formregister.value.pass);
+        console.log("apellido "+this.formregister.value.apellidos);
+        console.log("tele "+this.formregister.value.telefono);
   }
 }

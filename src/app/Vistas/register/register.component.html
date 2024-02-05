@@ -47,7 +47,7 @@
                 <span class="icon">
                     <i class="bi bi-lock-fill"></i>
                 </span>
-                <input  placeholder="Password"  formControlName="pass" name="pass" id="passregister" required>
+                <input  placeholder="Password" type="password" formControlName="pass" name="pass" id="passregister" required>
                 <div *ngIf="formregister.controls['pass'].errors" class="text-danger">
                     La contraseña es obligatoria 
                 </div>

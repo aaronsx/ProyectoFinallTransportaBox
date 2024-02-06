@@ -12,11 +12,22 @@
   backdrop-filter: blur(10px); /* Ajusta el valor del desenfoque según necesites */
 }
 
+::ng-deep .mdc-list-item__primary-text  {
+  color: #FFFFFF !important; /* Establece el color del texto a blanco */
+}
+
+::ng-deep  a:hover {
+  font-size: 150%; /* Ajusta el tamaño del texto al pasar el cursor por encima */
+  filter: brightness(80%); /* Ajusta la oscuridad del texto al pasar el cursor por encima */
+  color: rgba(255, 251, 0, 1);
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }
 .mat-drawer-container {
   background-color: transparent !important;
+  
 }
 .mat-toolbar.mat-primary {
   position: sticky;

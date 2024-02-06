@@ -1,0 +1,25 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background: linear-gradient(190deg, rgba(0, 153, 255, 0.2), rgba(51, 51, 51, 0.2));
+  backdrop-filter: blur(10px); /* Ajusta el valor del desenfoque según necesites */
+}
+.fondo{
+  background: linear-gradient(10deg, rgba(255, 251, 0, 0.2),rgba(0, 0, 0, 0.2));
+  backdrop-filter: blur(10px); /* Ajusta el valor del desenfoque según necesites */
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+.mat-drawer-container {
+  background-color: transparent !important;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

@@ -5,3 +5,5 @@ body{
     height: 100vh; /* Hace que el fondo ocupe el 100% de la altura de la ventana del navegador */
     background-attachment: fixed; /* Fija la imagen de fondo para que se repita al hacer scroll */
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { MenuRoutingModule } from './menu-routing.module';
+import { MenuComponent } from './menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './Vistas/login/login.component';
-import { RegisterComponent } from './Vistas/register/register.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -14,26 +13,21 @@ import { environment } from 'src/environments/environment.development';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MenuComponent } from './modelo/menu/menu.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
     MenuComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    MenuRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -45,14 +39,11 @@ import { MenuComponent } from './modelo/menu/menu.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule { }
+export class MenuModule { }

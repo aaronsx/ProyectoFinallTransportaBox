@@ -1,9 +1,8 @@
-import { Component, ElementRef, Renderer2, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { CambioFondoService } from 'src/app/Servicios/cambio-fondo.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,13 +11,7 @@ import { CambioFondoService } from 'src/app/Servicios/cambio-fondo.service';
 })
 export class MenuComponent {
   private breakpointObserver = inject(BreakpointObserver);
-  constructor( 
-    private fondoService: CambioFondoService, 
-    private renderer: Renderer2, private el: ElementRef) {}
 
-  ngOnInit(): void {
-    
-  }
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

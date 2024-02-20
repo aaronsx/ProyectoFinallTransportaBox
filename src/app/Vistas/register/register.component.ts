@@ -2,7 +2,7 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/Servicios/autenticacion.service';
 import { CambioFondoService } from 'src/app/Servicios/cambio-fondo.service';
-import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import { Usuario } from 'src/app/modelo/usuario';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
@@ -10,13 +10,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  
   formregister = this.formBuilder.group({
     nombre: ['',[ Validators.required, Validators.minLength(3)]],
     apellidos: ['', [Validators.required, Validators.maxLength(15)]],
-    email: ['', [Validators.required, Validators.email]],
+    emailform: ['', [Validators.required, Validators.email]],
     telefono: ['', [Validators.required,Validators.maxLength(9)]],
-    pass: ['', [Validators.required]]  
-  })
+    pass: ['', [Validators.required]] });
 
   // Propiedades booleanas para indicar si cada campo tiene valor
   hasNombre: boolean = false;
@@ -28,8 +28,8 @@ export class RegisterComponent {
   constructor(private formBuilder: FormBuilder, 
     private fondoService: CambioFondoService, 
     private renderer: Renderer2, private el: ElementRef, 
-    public authService: AutenticacionService,
-    private fbs:FirebaseService) {}
+    public authService: AutenticacionService) {
+    }
 
   ngOnInit(): void {
     this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/fondoalreves.jpg');
@@ -49,7 +49,7 @@ export class RegisterComponent {
 
     
 
-    this.formregister.controls['email']?.valueChanges.subscribe((value) => {
+    this.formregister.controls['emailform']?.valueChanges.subscribe((value) => {
       this.hasEmail = !!value;
     });
 
@@ -61,10 +61,20 @@ export class RegisterComponent {
       this.hasPass = !!value;
     });
   }
-
+  usuario:any;
   enviar() {
     //Swal es un tipo de alertas realizada si se borra o no el usuario
-    this.fbs.setFireBase(this.formregister.value,'Usuario').then(() =>
+      this.usuario = this.usuario || {};
+      this.usuario.email = this.formregister.value.emailform!;
+      this.usuario.apellido = this.formregister.value.apellidos!;
+      this.usuario.id_acceso = 1;
+      this.usuario.nombre = this.formregister.value.nombre!;
+      this.usuario.pass = this.formregister.value.pass!;
+      this.usuario.telefono = this.formregister.value.telefono!;
+  
+  
+    
+  this.authService.SignUp(this.usuario).then(() =>
 
     Swal.fire({
       title: "Guardado!",
@@ -76,11 +86,6 @@ export class RegisterComponent {
       text: "El usuario no ha sido guardado",
       icon: 'error'
     }));
-    this.authService.SignUp(this.formregister.value.email || "", this.formregister.value.pass|| "");
-        console.log("email "+this.formregister.value.email);
-        console.log("nombre "+this.formregister.value.nombre);
-        console.log("pass "+this.formregister.value.pass);
-        console.log("apellido "+this.formregister.value.apellidos);
-        console.log("tele "+this.formregister.value.telefono);
+    
   }
 }

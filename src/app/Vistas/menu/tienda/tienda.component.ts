@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { CambioFondoService } from 'src/app/Servicios/cambio-fondo.service';
 
 @Component({
   selector: 'app-tienda',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class TiendaComponent {
 
+  constructor( 
+    private fondoService: CambioFondoService, 
+    private renderer: Renderer2, private el: ElementRef) {}
+
+  ngOnInit(): void {
+    this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/tienda.jpg');
+  }
 }

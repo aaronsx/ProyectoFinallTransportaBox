@@ -9,7 +9,7 @@ import { loginGuard } from './guards/login.guard';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'menu',canActivate:[loginGuard], loadChildren: () => import('./Vistas/menu/menu.module').then(m => m.MenuModule) }
+  { path: 'menu',loadChildren: () => import('./Vistas/menu/menu.module').then(m => m.MenuModule) }
 ];
 
 @NgModule({

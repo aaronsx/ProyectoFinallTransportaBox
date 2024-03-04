@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/Servicios/autenticacion.service';
 import { CambioFondoService } from 'src/app/Servicios/cambio-fondo.service';
 
@@ -18,7 +19,7 @@ export class LoginComponent {
     private fondoService: CambioFondoService,
     private renderer: Renderer2, 
     private el: ElementRef,
-    private abs:AutenticacionService
+    private abs:AutenticacionService, private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -26,7 +27,14 @@ export class LoginComponent {
   }
   //Metodo para hacer login 
   hacerlogin(){
-    this.abs.SignIn(this.formlogin.value.email||"",this.formlogin.value.pass||"")
+    this.abs.SignIn(this.formlogin.value.email||"",this.formlogin.value.pass||"").then(() => {
+      // Si el inicio de sesión es exitoso, redirige
+      this.router.navigate(['/menu']);
+    })
+    .catch((error) => {
+      // Maneja cualquier error aquí, por ejemplo, mostrando un mensaje al usuario
+      console.error(error);
+    });
   }
 
 }

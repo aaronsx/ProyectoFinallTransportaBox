@@ -16,9 +16,11 @@ export class MenuComponent {
     private fondoService: CambioFondoService, 
     private renderer: Renderer2, private el: ElementRef) {}
 
-  ngOnInit(): void {
     
-  }
+  
+    ngOnInit(): void {
+      this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/logo.jpg');
+    }
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

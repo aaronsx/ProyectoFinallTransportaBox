@@ -20,15 +20,13 @@ export class AutenticacionService {
   ) {
     /* Guardar datos de usuario en el almacenamiento local cuando
     iniciado sesión y configurando nulo cuando se cierra la sesión */
+    console.log("Constructor del ofAuth:"+this.afAuth.authState);
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
-      } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-      }
+      } 
     });
   }
   // Login con email y contraseña
@@ -72,7 +70,7 @@ export class AutenticacionService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['/login']);
     });
   }
 

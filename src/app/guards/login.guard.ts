@@ -3,10 +3,12 @@ import { Router } from "@angular/router";
 
 export const loginGuard=()=>{
     const router = inject(Router);
-    if(localStorage.getItem('user')){
+    if(localStorage.getItem('user')!=null){
+        console.log("true");
         return true;
     }else{
-        router.navigate(['']);
+        console.log("false");
+        router.navigate(['/login']);
         return false;
     }
 }

@@ -7,14 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: AdministracionComponent, // Contenedor para las subrutas de 'admin'
-    children: [
-      {
-        path: 'editar',
+  },{
+    path: 'editar',
         component: EditarComponent,
-      },
-      // Otras subrutas de administración aquí
-    ],
-  },
+        
+  }
 ];
 
 @NgModule({

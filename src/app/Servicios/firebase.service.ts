@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class FirebaseService {
 
   constructor(private fb:Firestore) { }
-  
+  //Te traes toda la coleccion
   getFireBase(nombreColeccion: string){
     const collecionRef = collection(this.fb, nombreColeccion);
     return collectionData(collecionRef, {idField: "id"}) as Observable<any[]>;
@@ -44,7 +44,7 @@ export class FirebaseService {
     const collectionRef = doc(this.fb, nombreColeccion+"/"+id);
     return setDoc(collectionRef, objeto);
   }
-
+  //Método para eliminar de la base de datos
   deleteFireBase(objeto: any, nombreColeccion: string){
     const collectionRef = doc(this.fb, nombreColeccion+"/"+objeto.id);
     return deleteDoc(collectionRef);

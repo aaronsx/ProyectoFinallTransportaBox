@@ -79,9 +79,7 @@ export class AutenticacionService {
       });
   }
 
-  /**
-   * Método que devuelve true si el usuario es admin o false si no
-   */
+  //Método que devuelve true si el usuario es admin o false si no
   get isAdmin(): boolean {
     const id_acceso = localStorage.getItem('userID');
     return id_acceso !== null; // Devuelve true si existe un valor en userID

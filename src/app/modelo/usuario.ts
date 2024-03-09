@@ -1,3 +1,4 @@
+//Usuario hace el objeto de usuario
 export interface Usuario {
     id?:string;
     nombre:string;

@@ -24,6 +24,7 @@ export class MenuComponent {
   
     ngOnInit(): void {
       this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/logo.jpg');
+      //Sacamos si es admin
       this.esAdmin = this.abs.isAdmin;
     }
     cerrarsesion()

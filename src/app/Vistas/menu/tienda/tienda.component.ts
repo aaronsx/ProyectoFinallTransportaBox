@@ -13,6 +13,7 @@ export class TiendaComponent {
 
   // Lista donde guardaremos las tiendas
   tiendas: Tienda[] = [];
+  tiendaSeleccionada: Tienda | null = null;
   constructor( 
     private fondoService: CambioFondoService, 
     private renderer: Renderer2, private el: ElementRef,
@@ -28,7 +29,11 @@ export class TiendaComponent {
       
     });
   }
+ 
 
+  mostrarDetalles(tienda: Tienda) {
+    this.tiendaSeleccionada = tienda;
+  }
    //Eliminamos tienda
    eliminarTienda(tienda: Tienda) {
     

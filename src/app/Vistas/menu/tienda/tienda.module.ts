@@ -6,12 +6,14 @@ import { TiendaComponent } from './tienda.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditarComponent } from './editar/editar.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 
 @NgModule({
   declarations: [
     TiendaComponent,
-    EditarComponent
+    EditarComponent,
+    DetallesComponent
   ],
   imports: [
     CommonModule,

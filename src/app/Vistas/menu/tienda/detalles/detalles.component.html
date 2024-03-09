@@ -1,0 +1,8 @@
+<div class="contenedor">
+    <div *ngIf="tienda" class="detalles">
+      <!-- Muestra la información de la tienda aquí -->
+      <h2>{{ tienda.tienda }}</h2>
+      <p>Código Postal: {{ tienda.codigoPostal }}</p>
+      <button class="btn-pdf" (click)="hacerPdf(tienda)">Generar PDF</button>
+    </div>
+  </div>

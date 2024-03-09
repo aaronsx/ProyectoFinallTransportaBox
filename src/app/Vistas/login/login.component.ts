@@ -23,6 +23,7 @@ export class LoginComponent {
     ) {}
 
   ngOnInit(): void {
+    //Método para cambiar el fondo
     this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/fondoalreves.jpg');
   }
   //Metodo para hacer login 

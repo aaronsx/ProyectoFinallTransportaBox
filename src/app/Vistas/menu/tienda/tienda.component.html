@@ -20,7 +20,7 @@
             <td>{{tienda.tienda}}</td>
             <td>{{tienda.codigoPostal}}</td>
             <td>
-              Detalles de la tienda 
+              <i class="bi bi-shop" style="color: rgb(0, 255, 85); margin-left: 35px; cursor: pointer;" (click)="mostrarDetalles(tienda)"></i>
             </td>
             <td>
               <i class="bi bi-trash" style="color: red; margin-left: 35px; cursor: pointer;" (click)="eliminarTienda(tienda)"></i>
@@ -34,3 +34,11 @@
     <div style="text-align: center;">
         <button class="btn btn-primary" routerLink="/menu/tienda/crear">Añadir</button>
     </div> 
+
+
+
+    <div class="row">
+      <div class="col-12">
+          <app-detalles *ngIf="tiendaSeleccionada" [tienda]="tiendaSeleccionada"></app-detalles>
+      </div>
+  </div>

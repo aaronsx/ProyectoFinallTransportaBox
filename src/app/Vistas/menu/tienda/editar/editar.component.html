@@ -1,1 +1,18 @@
-<p>editar works!</p>
+<div class="formularioeditar">
+    <h1 style="text-align: center;">Crear Tienda</h1>
+    <div class="inputs-form">
+        <form method="post" [formGroup]="formEditar" (submit)="crearTienda()">
+            <div class="mb-3">
+                <label for="nombreForm" class="form-label">Tienda</label>
+                <input type="text" class="form-control" id="nombreForm" formControlName="tienda">
+            </div>
+            <div class="mb-3">
+                <label for="nombreForm" class="form-label">Codigo Postal</label>
+                <input type="text" class="form-control" id="apellidoForm" formControlName="codigopostal">
+            </div>
+            
+            <button type="submit" class="iniciar" [disabled]="!formEditar.valid">Crear</button>
+            <button class="volver" routerLink="/menu/tienda">Volver</button>
+        </form>
+</div>
+</div>

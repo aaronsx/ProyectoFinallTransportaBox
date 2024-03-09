@@ -16,7 +16,7 @@ export class RegisterComponent {
     apellidos: ['', [Validators.required, Validators.maxLength(15)]],
     emailform: ['', [Validators.required, Validators.email]],
     telefono: ['', [Validators.required,Validators.maxLength(9)]],
-    pass: ['', [Validators.required]] });
+    pass: ['', [Validators.required,Validators.minLength(6)]] });
 
   // Propiedades booleanas para indicar si cada campo tiene valor
   hasNombre: boolean = false;
@@ -71,7 +71,6 @@ export class RegisterComponent {
       this.usuario.nombre = this.formregister.value.nombre!;
       this.usuario.pass = this.formregister.value.pass!;
       this.usuario.telefono = this.formregister.value.telefono!;
-  
   
     
   this.authService.SignUp(this.usuario).then(() =>

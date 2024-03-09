@@ -1,58 +1,38 @@
-<div class="form-wrapper">
-    <form id="formularioRegistrarse" [formGroup]="formregister" >
-        <h2>Registrarse</h2>
-        <div class="form-group input-box">
-            <span class="icon">
-                <i class="bi bi-person-fill"></i>
-            </span>
-            <input  placeholder="Nombre" formControlName="nombre" required>
-            <div *ngIf="formregister.controls['nombre'].errors" class="text-danger">
-                El nombre es obligatorio 
-            </div>
+<div class="formularioeditar" *ngIf="usuario">
+            <h1 style="text-align: center;">Editar Usuario</h1>
+            <div class="inputs-form">
+                <form method="post" [formGroup]="formEditar" (submit)="editaUsuario()">
+                    <div class="mb-3">
+                        <label for="nombreForm" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreForm" formControlName="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombreForm" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellidoForm" formControlName="apellidos">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailForm" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailForm" formControlName="emailform">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tlfForm" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="tlfForm" formControlName="telefono">
+                    </div>
+                    <div class="mb-3">
+                        <label for="psswdForm" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="pssForm" formControlName="pass">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rolForm" class="form-label">Rol</label>
+                        <select id="rolForm" class="form-select"formControlName="acceso">
+                          <option value="2">Admin</option>
+                          <option value="1">Usuario</option>
+                        </select>
+                      </div>
+                    <button type="submit" class="iniciar" [disabled]="!formEditar.valid">Actualizar</button>
+                    <button class="volver" routerLink="/menu/admin">Volver</button>
+                </form>
         </div>
-        <div class="form-group input-box">
-            <span class="icon">
-                <i class="bi bi-person-fill"></i>
-            </span>
-            <input  placeholder="Apellido" formControlName="apellidos" required>
-            <div *ngIf="formregister.controls['apellidos'].errors" class="text-danger">
-                El apellido es obligatorio 
-            </div>
-        </div>
-        <div class="form-group input-box">
-            <span class="icon">
-                <i class="bi bi-telephone-fill"></i>
-            </span>
-            <input  placeholder="Telefono" formControlName="telefono" required>
-            <div *ngIf="formregister.controls['telefono'].errors" class="text-danger">
-                El numero es obligatorio 
-            </div>
-        </div>
-        <div class="form-group input-box">
-            <span class="icon">
-                <i class="bi bi-envelope-fill"></i>
-            </span>
-            <input  placeholder="Email" formControlName="emailform" required>
-            <div *ngIf="formregister.controls['emailform'].errors" class="text-danger">
-                El email es obligatorio 
-            </div>
-        </div>
-       
-        <div class="form-group input-box">
-            <span class="icon">
-                <i class="bi bi-lock-fill"></i>
-            </span>
-            <input  placeholder="Password" type="password" formControlName="pass" name="pass" id="passregister" required>
-            <div *ngIf="formregister.controls['pass'].errors" class="text-danger">
-                La contraseña es obligatoria 
-            </div>
-        </div>
-        
-        <button type="submit"  [disabled]="!formregister.valid">Registrarse</button>
-        <div class="sign-link">
-            <p>¿Ya tienes cuenta? <a href="">Inciar Sesion</a></p>
-        </div>
-    </form>
 </div>
 
 

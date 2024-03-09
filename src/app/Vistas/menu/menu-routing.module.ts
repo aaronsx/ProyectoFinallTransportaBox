@@ -16,11 +16,7 @@ const routes: Routes = [
       {
         path: 'tienda',
         loadChildren: () => import('./tienda/tienda.module').then(m => m.TiendaModule),
-      },
-      {
-        path: 'pedido',
-        loadChildren: () => import('./pedido/pedido.module').then(m => m.PedidoModule),
-      },
+      }
       // Más rutas cargadas de manera perezosa aquí
     ]
   }

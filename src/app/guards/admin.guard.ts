@@ -1,12 +1,12 @@
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 
-export const loginGuard=()=>{
+export const adminguard=()=>{
     const router = inject(Router);
-    if(localStorage.getItem('user')!=null){
+    if(localStorage.getItem('userID')=="2"){
         return true;
     }else{
-        router.navigate(['/login']);
+        router.navigate(['']);
         return false;
     }
 }

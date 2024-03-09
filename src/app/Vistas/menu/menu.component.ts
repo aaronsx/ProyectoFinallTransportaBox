@@ -19,10 +19,12 @@ export class MenuComponent {
     private abs:AutenticacionService
     ) {}
 
-    
+     // Variable para indicar si el usuario es administrador
+      esAdmin: boolean = false;
   
     ngOnInit(): void {
       this.fondoService.cambiarFondoConImagen(this.renderer, this.el, 'assets/logo.jpg');
+      this.esAdmin = this.abs.isAdmin;
     }
     cerrarsesion()
     {
